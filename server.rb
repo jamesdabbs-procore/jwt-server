@@ -1,5 +1,3 @@
-#!/usr/bin/env ruby
-
 require 'base64'
 require 'httparty'
 require 'json'
@@ -46,7 +44,9 @@ class App < Sinatra::Base
       JSON.parse(Base64.decode64(encoded))
     end
 
-    json(
+    content_type :json
+
+    JSON.pretty_generate(
       user: {
         email: env['HTTP_X_FORWARDED_EMAIL'],
         username: env['HTTP_X_FORWARDED_PREFERRED_USERNAME'],

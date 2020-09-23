@@ -6,7 +6,7 @@ A basic Sinatra server to parse, validate, and display JWTs, suitable for use be
 
 To run just the Sinatra app directly
 
-    $ ruby ./server.rb
+    $ ruby server.rb
 
 In this case, you will need to provide a valid JWT as an `Authorization: Bearer` token.
 
