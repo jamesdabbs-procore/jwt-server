@@ -37,14 +37,10 @@ class App < Sinatra::Base
     @jwks = {}
   end
 
-  configure do
-    set :bind, '0.0.0.0'
-  end
-
   get '/' do
     env = request.env
-    token = env['HTTP_X_FORWARDED_ACCESS_TOKEN']
-    return [404, ['X-Forwarded-Access-Token not found']] unless token
+    token = env['HTTP_AUTHORIZATION'] =~ /^Bearer (.*)/ && $1
+    return [404, ['Token not found']] unless token
 
     header, payload = token.split('.').first(2).map do |encoded|
       JSON.parse(Base64.decode64(encoded))
@@ -75,6 +71,11 @@ class App < Sinatra::Base
     {
       jwk: describe(jwk),
       verified: JSON::JWT.decode(token, jwk.to_key) == payload
+    }
+  rescue => e
+    {
+      error: e,
+      from: e.backtrace.first
     }
   end
 

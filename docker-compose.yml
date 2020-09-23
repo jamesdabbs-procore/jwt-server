@@ -23,6 +23,7 @@ services:
     - --cookie-secret=${OAUTH2_PROXY_COOKIE_SECRET}
     - --cookie-name=_oauth2_proxy_local
     - --cookie-secure=false
+    - --pass-authorization-header=true
     - --pass-access-token=true
   web:
     build: .

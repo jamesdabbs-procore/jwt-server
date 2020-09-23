@@ -6,7 +6,7 @@ To run just the Sinatra app directly
 
     $ ruby ./server.rb
 
-In this case, you will need to provide a valid JWT in the `X-Forwarded-Access-Token` header.
+In this case, you will need to provide a valid JWT as an `Authorization: Bearer` token.
 
 To run the server behind an oauth2-proxy
 

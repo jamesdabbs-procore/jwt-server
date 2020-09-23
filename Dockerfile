@@ -9,4 +9,4 @@ RUN bundle install --jobs 4 --retry 3
 
 ADD . /code
 
-ENTRYPOINT /code/server.rb
+ENTRYPOINT bundle exec rackup --host 0.0.0.0 -p 4567
