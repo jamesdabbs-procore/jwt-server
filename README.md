@@ -1,5 +1,7 @@
 A basic Sinatra server to parse, validate, and display JWTs, suitable for use behind an [oauth2-proxy](https://oauth2-proxy.github.io/oauth2-proxy/).
 
+![Docker Build Status](https://img.shields.io/docker/build/jdabbs/jwt-server)
+
 ## Running Locally
 
 To run just the Sinatra app directly
